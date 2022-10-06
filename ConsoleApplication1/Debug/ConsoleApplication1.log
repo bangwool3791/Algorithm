@@ -1,4 +1,4 @@
-﻿  11501_.cpp
-C:\Development\Baekjoon\Baekjoon\ConsoleApplication1\11501_.cpp(9,24): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Development\Baekjoon\Baekjoon\ConsoleApplication1\11501_.cpp(12,25): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  1260.cpp
+C:\Development\Baekjoon\Baekjoon\ConsoleApplication1\1260.cpp(9,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Development\Baekjoon\Baekjoon\ConsoleApplication1\1260.cpp(30,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   ConsoleApplication1.vcxproj -> C:\Development\Baekjoon\Baekjoon\Debug\ConsoleApplication1.exe
