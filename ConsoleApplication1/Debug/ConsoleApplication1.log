@@ -1,4 +1,3 @@
-﻿  1260.cpp
-C:\Development\Baekjoon\Baekjoon\ConsoleApplication1\1260.cpp(9,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Development\Baekjoon\Baekjoon\ConsoleApplication1\1260.cpp(30,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  1802.cpp
+C:\Development\Baekjoon\Baekjoon\ConsoleApplication1\1802.cpp(22): warning C4715: 'verify': 모든 제어 경로에서 값을 반환하지는 않습니다.
   ConsoleApplication1.vcxproj -> C:\Development\Baekjoon\Baekjoon\Debug\ConsoleApplication1.exe
