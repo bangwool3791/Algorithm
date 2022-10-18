@@ -31,6 +31,7 @@ int main()
 	{
 		char str[3010] = {};
 		cin >> str;
+
 		if (strlen(str) % 2 == 0)
 		{
 			cout << "NO";
