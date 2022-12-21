@@ -13,7 +13,7 @@ int main()
 		queue.push(i + 1);
 	}
 	int value = 0;
-
+	cout << "<";
 	while (queue.size() > 1)
 	{
 		for (int i = 1; i < k; ++i)
@@ -24,10 +24,13 @@ int main()
 		}
 		value = queue.front();
 		queue.pop();
-		cout << value << endl;
+		cout << value;
+		cout << ", ";
 	}
 	value = queue.front();
-	cout << value << endl;
+	cout << value;
+	cout << ">";
+	cout << '\n';
 	queue.pop();
 	return 0;
 }
