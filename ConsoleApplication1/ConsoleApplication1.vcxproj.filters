@@ -19,6 +19,9 @@
     <Filter Include="소스 파일\2212">
       <UniqueIdentifier>{b1dc4a18-0a04-46da-930a-70dff524b59e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\2202">
+      <UniqueIdentifier>{9cf1c184-b82c-4367-8c1a-4fe2109413f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -107,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="1158.cpp">
       <Filter>소스 파일\2212</Filter>
+    </ClCompile>
+    <ClCompile Include="2178.cpp">
+      <Filter>소스 파일\2202</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
