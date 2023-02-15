@@ -144,6 +144,30 @@
     <ClCompile Include="1463.cpp">
       <Filter>소스 파일\2202</Filter>
     </ClCompile>
+    <ClCompile Include="1916.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
+    <ClCompile Include="13549.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
+    <ClCompile Include="1238.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
+    <ClCompile Include="1504.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
+    <ClCompile Include="1261.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
+    <ClCompile Include="4485.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
+    <ClCompile Include="18352.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
+    <ClCompile Include="11779.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
