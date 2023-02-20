@@ -195,10 +195,18 @@
     <ClCompile Include="2579.cpp">
       <Filter>소스 파일\2202</Filter>
     </ClCompile>
+    <ClCompile Include="10844.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="9095.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </None>
   </ItemGroup>
 </Project>
