@@ -1,112 +1,133 @@
 #include "pch.h"
 
-//0 ºóÄ­, 1 »ç°ú, 2 ¹ì
-int n = 0, k = 0, l = 0;
-int x = 0;
-char c{};
+vector<pair<int, char>> vec;
+deque<pair<int, int>> deq;
+int v[101][101];
 
-int dx[4] = { -1 , 0, 1, 0 };
-int dy[4] = { 0 , 1, 0, -1 };
+int dx[4] = { 1, 0, -1 , 0 };
+int dy[4] = { 0, -1, 0 , 1 };
 
-vector<pair<int, char>> v{};
-
-int m[101][101];
+int n = 0;
 
 void Input()
 {
-	cin >> n >> k;
+	cin >> n;
 
-	for (int i = 0; i < n; ++i)
+	int m = 0;
+
+	for (int i = 0; i < 100; ++i)
 	{
-		for (int j = 0; j < n; ++j)
+		for (int j = 0; j < 100; ++j)
 		{
-			m[i][j] = 0;
+			int a = 0;
+			v[i][j] = a;
 		}
 	}
 
-	for (int i = 0; i < k; ++i)
+	cin >> m;
+
+	while (0 < m)
 	{
-		int _x = 0, _y = 0;
-		cin >> _y >> _x;
-		m[_y - 1][_x - 1] = 1;
+		int a = 0;
+		int b = 0;
+		cin >> a >> b;
+		v[a - 1][b - 1] = 1;
+		--m;
 	}
 
-	cin >> l;
-	for (int i = 0; i < l; ++i)
+	cin >> m;
+
+	while (0 < m)
 	{
-		cin >> x >> c;
-		v.push_back({ x,c });
+		int a = 0;
+		char b = 0;
+		cin >> a >> b;
+		vec.push_back({ a, b });
+		--m;
 	}
 }
 
-int Turn(int d, char c)
+int Rotation(char c, int a)
 {
-	if ('L' == c)
+	if ('D' == c)
 	{
-		if (0 == d) return 1;
-		else if (1 == d) return 2;
-		else if (2 == d) return 3;
-		else if (3 == d) return 0;
+		if (0 == a)return 3;
+		else if (1 == a)return 0;
+		else if (2 == a)return 1;
+		else if (3 == a)return 2;
 	}
-	else if ('D' == c)
+	else if ('L' == c)
 	{
-		if (0 == d) return 3;
-		else if (1 == d) return 0;
-		else if (2 == d) return 1;
-		else if (3 == d) return 2;
+		if (0 == a)return 1;
+		else if (1 == a)return 2;
+		else if (2 == a)return 3;
+		else if (3 == a)return 0;
 	}
 }
 
-void Solution()
+
+void Print()
 {
-	int idx = 0;
-	int d = 2;
-	long long t = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << v[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+void Progress()
+{
+	int t = 0;
 	int x = 0;
 	int y = 0;
-	deque<pair<int, int>> deq;
+	int d = 0;
+	int idx = 0;
+
 	deq.push_back({ x,y });
-	m[y][x] = 2;
-	/*
-	* 1Á¶°Ç : ¹ìÀÌ º®¿¡ ´Ù´Ù¸£°Å³ª, ¹ìÀÌ ºÎµúÈù ¿µ¿ªÀÌ ¹ìÀÇ ¸öÀÎ °æ¿ì
-	* 2Á¶°Ç : ºñ¾îÀÖ´Â °æ¿ì
-	* 3Á¶°Ç : »ç°úÀÎ °æ¿ì
-	* 4Á¶°Ç : 
-	*/
-	while (true)
+	v[x][y] = 2;
+	while (!deq.empty())
 	{
 		++t;
 
-		int nx = x + dx[d];
-		int ny = y + dy[d];
-		
-		if (0 > nx || n <= nx || 0 > ny || n <= ny || 2 == m[ny][nx])
+		//x = deq.front().first;
+		//y = deq.front().second;
+
+		int _x = x + dx[d];
+		int _y = y + dy[d];
+
+		int target = v[_x][_y];
+
+		if (0 > _x || 0 > _y || n <= _x || n <= _y || target == 2)
 		{
 			break;
 		}
-		else if (0 == m[ny][nx])
+		else if (0 == target)
 		{
-			deq.push_front({ nx, ny });
-			m[ny][nx] = 2;
-			m[deq.back().second][deq.back().first] = 0;
+			v[_x][_y] = 2;
+			deq.push_front({ _x, _y });
+			v[deq.back().first][deq.back().second] = 0;
 			deq.pop_back();
 		}
-		else if (1 == m[ny][nx])
+		else if (1 == target)
 		{
-			deq.push_front({ nx, ny });
-			m[ny][nx] = 2;
+			v[_x][_y] = 2;
+			deq.push_front({ _x, _y });
 		}
 
-		if (idx < v.size())
+		if (idx < vec.size())
 		{
-			if (t >= v[idx].first)
+			if (t >= vec[idx].first)
 			{
-				d = Turn(d, v[idx].second);
+				d = Rotation(vec[idx].second, d);
 				++idx;
 			}
 		}
-		x = nx;
-		y = ny;
+		x = _x;
+		y = _y;
+
 	}
 
 	cout << t << endl;
@@ -115,6 +136,6 @@ void Solution()
 int main()
 {
 	Input();
-	Solution();
+	Progress();
 	return 0;
 }
