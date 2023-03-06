@@ -6,6 +6,7 @@ int dp[10001];
 * DP[1] = DP[1]
 * DP[2] = max(DP[1] + DP[1], DP[2]);
 * DP[3] = max(DP[1] + DP[2], DP[3]);
+* DP[3] = max(DP[2] + DP[2], DP[3]);
 * DP[4] = max(DP[1] + DP[3], DP[4]);
 * DP[4] = max(DP[2] + DP[2], DP[4]);
 * DP[4] = max(DP[3] + DP[1], DP[4]);
@@ -19,13 +20,13 @@ int main()
 {
 	int n = 0;
 	cin >> n;
-	int a = 0;
 
 	for (int i = 1; i <= n; ++i)
 	{
-		cin >> a;
-		dp[i] = a;
+		cin >> dp[i];
 	}
+
+	int a = 0;
 
 	for (int i = 1; i <= n; ++i)
 	{
@@ -34,6 +35,7 @@ int main()
 			dp[i] = max(dp[i - j] + dp[j], dp[i]);
 		}
 	}
-	cout << dp[n] << endl;
+
+	cout << dp[n];
 	return 0;
 }

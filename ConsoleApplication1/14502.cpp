@@ -1,14 +1,16 @@
 #include "pch.h"
 
+int dx[4] = { -1, 1, 0, 0 };
+int dy[4] = { 0, 0, -1, 1 };
 
-int dx[] = { -1,1,0,0 };
-int dy[] = { 0,0,-1,1 };
-int n, m;
-int c = 0;
-int origin[8][8];
-int copy_map[8][8];
+bool bCheck[8 * 8 + 1];
+int v[8][8];
+int v2[8][8];
+int n = 0, m = 0;
 
-void MapCopy(int(*a)[8], int(*b)[8])
+int answer = 0;
+
+void swap(int(*a)[8], int(*b)[8])
 {
 	for (int i = 0; i < 8; ++i)
 	{
@@ -21,11 +23,12 @@ void MapCopy(int(*a)[8], int(*b)[8])
 
 void bfs()
 {
-	queue<pair<int, int>> que;
-
 	int map[8][8];
+	int cnt = 0;
 
-	MapCopy(map, copy_map);
+	swap(map, v2);
+
+	queue<pair<int, int>> que;
 
 	for (int i = 0; i < n; ++i)
 	{
@@ -33,48 +36,61 @@ void bfs()
 		{
 			if (2 == map[i][j])
 			{
-				que.push(make_pair(i, j));
+				que.push({ j,i });
 			}
 		}
 	}
 
+
 	while (!que.empty())
 	{
-		pair<int, int> p = que.front();
+		int _x = que.front().first;
+		int _y = que.front().second;
+
 		que.pop();
 
 		for (int i = 0; i < 4; ++i)
 		{
-			int _x = p.second + dx[i];
-			int _y = p.first +dy[i];
+			int __x = _x + dx[i];
+			int __y = _y + dy[i];
 
-			if (-1 < _x && _x < m && -1 < _y && _y < n)
+			if (-1 < __x && __x < m && -1 < __y && __y < n)
 			{
-				if (0 == map[_y][_x])
+				if (0 == map[__y][__x])
 				{
-					map[_y][_x] = 2;
-					que.push(make_pair(_y, _x));
+					map[__y][__x] = 2;
+					que.push({ __x, __y });
 				}
 			}
-			
 		}
 	}
 
-	int cnt = 0;
+	//for (int i = 0; i < n; ++i)
+	//{
+	//	for (int j = 0; j < m; ++j)
+	//	{
+	//		cout << map[i][j] << " ";
+	//	}
+	//	cout << endl;
+	//}
+
+	//cout << endl;
 
 	for (int i = 0; i < n; ++i)
 	{
 		for (int j = 0; j < m; ++j)
 		{
 			if (0 == map[i][j])
+			{
 				++cnt;
+			}
+
 		}
 	}
-
-	c = max(cnt, c);
+	answer = max(cnt, answer);
 }
 
-void block(int idx)
+void routue(int idx)
 {
 	if (3 == idx)
 	{
@@ -87,13 +103,24 @@ void block(int idx)
 		{
 			for (int j = 0; j < m; ++j)
 			{
-				if (0 == copy_map[i][j])
+				if (v2[i][j] == 0)
 				{
-					copy_map[i][j] = 1;
-					block(idx + 1);
-					copy_map[i][j] = 0;
+					v2[i][j] = 1;
+					routue(idx + 1);
+					v2[i][j] = 0;
 				}
 			}
+		}
+	}
+}
+
+void Input()
+{
+	for (int i = 0; i < n; ++i)
+	{
+		for (int j = 0; j < m; ++j)
+		{
+			cin >> v[i][j];
 		}
 	}
 }
@@ -101,30 +128,22 @@ int main()
 {
 	cin >> n >> m;
 
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = 0; j < m; ++j)
-		{
-			int data = 0;
-			cin >> data;
-			origin[i][j] = data;
-		}
-	}
+	Input();
 
 	for (int i = 0; i < n; ++i)
 	{
 		for (int j = 0; j < m; ++j)
 		{
-			MapCopy(copy_map, origin);
-			if (0 == copy_map[i][j])
+			if (v[i][j] == 0)
 			{
-				copy_map[i][j] = 1;
-				block(1);
-				copy_map[i][j] = 0;
+				v[i][j] = 1;
+				swap(v2, v);
+				routue(1);
+				v[i][j] = 0;
 			}
 		}
 	}
 
-	cout << c << endl;
+	cout << answer;
 	return 0;
 }

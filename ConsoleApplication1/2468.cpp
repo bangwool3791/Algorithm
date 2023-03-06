@@ -6,27 +6,37 @@ int dx[4] = { -1, 0, 1, 0 };
 int dy[4] = { 0, 1, 0, -1 };
 
 int v[101][101];
-bool flag[101][101];
+bool bCheck[101][101];
 
 int n = 0;
-int cnt = 0;
-
-long long answer[101];
-
-void dfs(int x, int y, int k)
+int iMax = 0;
+long long cnt = 0;
+long long answer = 0;
+void bfs(int x, int y, int k)
 {
-	flag[y][x] = true;
+	queue<pair<int, int>> que;
+	que.push({ x, y });
+	bCheck[y][x] = true;
 
-	for (int i = 0; i < 4; ++i)
+	while (!que.empty())
 	{
-		int _x = x + dx[i];
-		int _y = y + dy[i];
+		int _x = que.front().first;
+		int _y = que.front().second;
 
-		if (0 < _x && _x <= n && 0 < _y && _y <= n)
+		que.pop();
+
+		for (int i = 0; i < 4; ++i)
 		{
-			if (false == flag[_y][_x] && k < v[_y][_x])
+			int __x = _x + dx[i];
+			int __y = _y + dy[i];
+
+			if (-1 < __x && __x < n && -1 < __y && __y < n)
 			{
-				dfs(_x, _y, k);
+				if (!bCheck[__y][__x] && k < v[__y][__x])
+				{
+					bCheck[__y][__x] = true;
+					que.push({ __x,__y });
+				}
 			}
 		}
 	}
@@ -34,67 +44,54 @@ void dfs(int x, int y, int k)
 
 void clear()
 {
-	for(int i = 1; i <= 100; ++i)
+	for (int i = 0; i < n; ++i)
 	{
-		for (int j = 1; j <= 100; ++j)
+		for (int j = 0; j < n; ++j)
 		{
-			flag[i][j] = false;
+			bCheck[i][j] = false;
 		}
 	}
 }
-int main()
+
+void Input()
 {
-	int h = 0;
-	cin >> n;
-
-	for (int i = 1; i <= n; ++i)
+	for (int i = 0; i < n; ++i)
 	{
-		for (int j = 1; j <= n; ++j)
+		for (int j = 0; j < n; ++j)
 		{
-			int a = 0;
-			cin >> a;
-			v[i][j] = a;
+			cin >> v[i][j];
 
-			if (h < v[i][j])
-				h = v[i][j];
+			if (iMax < v[i][j])
+				iMax = v[i][j];
 		}
 	}
+}
 
-	for (int k = 1; k <= 100; ++k)
+int main()
+{
+	cin >> n;
+
+	Input();
+
+	for (int k = 0; k <= iMax; ++k)
 	{
-		clear();
-
-		for (int i = 1; i <= n; ++i)
+		for (int i = 0; i < n; ++i)
 		{
-			for (int j = 1; j <= n; ++j)
+			for (int j = 0; j < n; ++j)
 			{
-				if (k < v[i][j] && false == flag[i][j])
+				if (!bCheck[i][j] && k < v[i][j])
 				{
 					++cnt;
-					dfs(j, i, k);
+					bfs(j, i, k);
 				}
 			}
 		}
-		if (!cnt)
-		{
-			answer[k] = 1;
-		}
-		else
-		{
-			answer[k] = cnt;
-		}
+		if (answer < cnt)
+			answer = cnt;
 		cnt = 0;
+		clear();
 	}
 
-	long long output = 1;
-	for (int i = 0; i <= h; ++i)
-	{
-		if (output < answer[i])
-		{
-			output = answer[i];
-		}
-	}
-
-	cout << output << endl;
+	cout << answer << endl;
 	return 0;
 }
