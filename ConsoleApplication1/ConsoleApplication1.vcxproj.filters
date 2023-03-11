@@ -28,6 +28,9 @@
     <Filter Include="소스 파일\2303\Implement">
       <UniqueIdentifier>{04636079-73e6-4591-af34-ba17b4c81feb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\2303\datastructure">
+      <UniqueIdentifier>{6886c36d-7d3f-4b91-a9f3-d94ffa2429ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -257,6 +260,18 @@
     </ClCompile>
     <ClCompile Include="15685.cpp">
       <Filter>소스 파일\2303\Implement</Filter>
+    </ClCompile>
+    <ClCompile Include="2042.cpp">
+      <Filter>소스 파일\2303\datastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="1766.cpp">
+      <Filter>소스 파일\2303\datastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="1202.cpp">
+      <Filter>소스 파일\2303\datastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="7662.cpp">
+      <Filter>소스 파일\2303\datastructure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
