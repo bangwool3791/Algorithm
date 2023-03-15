@@ -1,71 +1,89 @@
 #include "pch.h"
 
+#define MAX 1000001
+
 long long* tree;
-long long arr[1000001];
+long long arr[MAX];
 
-long long init(int node, int start, int end)
+int init(int node, int start, int end)
 {
-	//리프노드이면 배열의 값 대입
-	if (start == end) return tree[node] = arr[start];
+    if (start == end) return tree[node] = arr[start];
 
-	int mid = (start + end) / 2;
-	
-	return tree[node] = init(node * 2, start, mid) + init(node * 2 + 1, mid + 1, end);
+    int mid = (start + end) / 2;
+
+    return tree[node] = init(node * 2, start, mid) + init(node * 2 + 1, mid + 1, end);
 }
 
-int sum(int start, int end, int node, int left, int right)
+int sum(int node, int start, int end, int left, int right)
 {
-	//범위 밖에 있는 경우
-	if (left > end || right < start) return 0;
+    /*
+    * 예외처리 1
+    * 조건 sum(node * 2, start, mid, left, right) -> end가 left보다 작아 진다.
+    * 조건 sum(node * 2 + 1, mid + 1, end, left, right) -> start가 right보다 커진다.
+    */
+    if (left > end || right < start) return 0;
 
-	if (left <= start && end <= right) return tree[node];
+    /*
+    * 자식 노드가 합산 범위에 있으면 
+    */
+    if (left <= start && end <= right) return tree[node];
 
-	int mid = (start + end) / 2;
+    /*
+    * 아래 자식 노드 sum 실행한다.
+    */
+    int mid = (start + end) / 2;
 
-	return sum(start, mid, node * 2, left, right) + sum(mid + 1, end, node * 2 + 1, left, right);
+    return sum(node * 2, start, mid, left, right) + sum(node * 2 + 1, mid + 1, end, left, right);
 }
 
-void update(int start, int end, int node, int index, int diff)
+void update(int node, int start, int end, int index, int diff)
 {
-	if (index < start || index > end) return;
+    //노드가 인덱스를 벗어나면
+    if (index < start || index > end) return;
 
-	tree[node] += diff;
+    tree[node] += diff;
 
-	if (start == end) return;
+    //시작과 끝이 같다면 리턴
+    if (start == end) return;
 
-	int mid = (start + end) / 2;
-	update(start, mid, node * 2, index, diff);
-	update(mid + 1, end, node * 2 + 1, index, diff);
+    int mid = (start + end) / 2;
+    update(node * 2, start, mid, index, diff);
+    update(node * 2 + 1, mid + 1, end, index, diff);
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
 
-	int num, m, k, a, b;
-	long long c;
-	cin >> num >> m >> k;
-	int height = ceil(log2(num));
-	tree = new long long[1 << (height + 1)];
-	for (int i = 0; i < num; ++i)
-		cin >> arr[i];
+    int num, m, k, a, b, c;
 
-	init(1, 0, num - 1);
+    cin >> num >> m >> k;
 
-	for (int i = 0; i < m + k; ++i)
-	{
-		cin >> a >> b >> c;
+    for (int i = 0; i < num; ++i)
+        cin >> arr[i];
 
-		if (a == 1)
-		{
-			long long diff = c - arr[b - 1];
-			arr[b - 1] = c;
-			update(1, 0, num - 1, b - 1, diff);
-		}
-		else if (a == 2)
-			cout << sum(1, 0, num - 1, b - 1, c - 1) << endl;
-	}
-	return 0;
+    int height = ceil(log2(num));
+
+    tree = new long long[1 << (height + 1)];
+
+    init(1, 0, num - 1);
+
+    for (int i = 0; i < m + k; ++i)
+    {
+        cin >> a >> b >> c;
+
+        if (1 == a)
+        {
+            long long diff = c - arr[b - 1];
+            arr[b - 1] = c;
+            update(1, 0, num - 1, b - 1, diff);
+        }
+        else if (2 == a)
+        {
+            cout << sum(1, 0, num - 1, b - 1, c - 1) << endl;
+        }
+    }
+    return 0;
 }

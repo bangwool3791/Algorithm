@@ -273,6 +273,12 @@
     <ClCompile Include="7662.cpp">
       <Filter>소스 파일\2303\datastructure</Filter>
     </ClCompile>
+    <ClCompile Include="10868.cpp">
+      <Filter>소스 파일\2303\datastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="2357.cpp">
+      <Filter>소스 파일\2303\datastructure</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
