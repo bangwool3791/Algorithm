@@ -1,2 +1,4 @@
-﻿  2357.cpp
+﻿  16235.cpp
+D:\Baekjoon\ConsoleApplication1\16235.cpp(26,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Baekjoon\ConsoleApplication1\16235.cpp(60,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   ConsoleApplication1.vcxproj -> D:\Baekjoon\Debug\ConsoleApplication1.exe
