@@ -31,6 +31,12 @@
     <Filter Include="소스 파일\2303\datastructure">
       <UniqueIdentifier>{6886c36d-7d3f-4b91-a9f3-d94ffa2429ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\2205">
+      <UniqueIdentifier>{a5876796-479c-4902-a6d4-27a48b2a5532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\2305">
+      <UniqueIdentifier>{9a43cdb6-1508-4e11-bc5b-68b309e91531}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -281,6 +287,12 @@
     </ClCompile>
     <ClCompile Include="16235.cpp">
       <Filter>소스 파일\2303\datastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="소스.cpp">
+      <Filter>소스 파일\2202</Filter>
+    </ClCompile>
+    <ClCompile Include="11505.cpp">
+      <Filter>소스 파일\2305</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
