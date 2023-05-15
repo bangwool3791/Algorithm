@@ -37,6 +37,9 @@
     <Filter Include="소스 파일\2305">
       <UniqueIdentifier>{9a43cdb6-1508-4e11-bc5b-68b309e91531}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\2305\segment">
+      <UniqueIdentifier>{16dc2eb6-8ac1-47cb-b60c-116e86b19668}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -292,7 +295,10 @@
       <Filter>소스 파일\2202</Filter>
     </ClCompile>
     <ClCompile Include="11505.cpp">
-      <Filter>소스 파일\2305</Filter>
+      <Filter>소스 파일\2305\segment</Filter>
+    </ClCompile>
+    <ClCompile Include="1275.cpp">
+      <Filter>소스 파일\2305\segment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

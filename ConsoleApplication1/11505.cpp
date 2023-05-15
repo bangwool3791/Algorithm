@@ -1,49 +1,56 @@
 #include "pch.h"
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
-const int INF = 1e9 + 1;
-#define MOD 1000000007
+const int MOD = 1000000007;
+#define INF 987654321
 #define MAX 1000001
-long long Arr[MAX];
-long long Node[MAX * 4];
 
-long long InitializeSeg(int left, int right, int node)
+long long arr[MAX];
+long long node[MAX * 4];
+
+long long initializeSegment(int first, int last, int idx)
 {
-	if (left == right)
+	if (first == last)
 	{
-		return Node[node] = Arr[left];
+		return node[idx] = arr[last];
 	}
-	
-	int mid = (left + right) / 2;
-	return Node[node] = (InitializeSeg(left, mid, node * 2) * InitializeSeg(mid + 1, right, node * 2 + 1)) % MOD;
+
+	int mid = (first + last) / 2;
+
+	return node[idx] = (initializeSegment(first, mid, idx * 2) * initializeSegment(mid + 1, last, idx * 2 + 1)) % MOD;
 }
 
-long long Query(int left, int right, int node, int leftnode, int rightnode)
+long long query(int first, int last, int idx, int firstNode, int lastNode)
 {
-	if (left > rightnode || right < leftnode)
+	if (lastNode < first || firstNode > last)
 		return 1;
 
-	if (leftnode >= left && rightnode <= right)
-		return Node[node];
+	if (firstNode >= first && lastNode <= last)
+	{
+		return node[idx];
+	}
 
-	int mid = (leftnode + rightnode) / 2;
+	int mid = (firstNode + lastNode) / 2;
 
-	return (Query(left, right, node * 2, leftnode, mid) * Query(left, right, node * 2 + 1, mid + 1, rightnode)) % MOD;
+	return (query(first, last, idx * 2, firstNode, mid) * query(first, last, idx * 2 + 1, mid + 1, lastNode)) % MOD;
 }
 
-long long Update(int node, int start, int end, int idx, long long val)
+long long update(int nodeidx, int first, int last, int idx, long long val)
 {
-	if (idx < start || idx > end) return Node[node];
+	if (idx < first || idx > last)
+	{
+		return node[nodeidx];
+	}
 
-	if (start == end)
-		return Node[node] = val;
-	
-	int mid = (start + end) / 2;
+	if (first == last)
+		return  node[nodeidx] = val;
 
-	return Node[node] = (Update(node * 2, start, mid, idx, val) * Update(node * 2 + 1, mid + 1, end, idx, val)) % MOD;
+	int mid = (first + last) / 2;
+
+	return node[nodeidx] = (update(nodeidx * 2, first, mid, idx, val) * update(nodeidx * 2 + 1, mid + 1, last, idx, val)) % MOD;
 }
 
 int main()
@@ -57,23 +64,23 @@ int main()
 
 	for (int i = 1; i <= N; ++i)
 	{
-		cin >> Arr[i];
+		cin >> arr[i];
 	}
 
-	InitializeSeg(1, N, 1);
+	initializeSegment(1, N, 1);
 
 	for (int i = 0; i < M + K; ++i)
 	{
 		int a, b, c;
 		cin >> a >> b >> c;
-		
+
 		if (a == 1)
 		{
-			Update(1, 1, N, b, c);
+			update(1, 1, N, b, c);
 		}
 		else
 		{
-			cout << Query(b, c, 1, 1, N) << "\n";
+			cout << query(b, c, 1, 1, N) << "\n";
 		}
 	}
 	return 0;
