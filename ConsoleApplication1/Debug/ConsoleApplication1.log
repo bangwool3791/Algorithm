@@ -1,3 +1,2 @@
-﻿  1275.cpp
-D:\Baekjoon\ConsoleApplication1\1275.cpp(79,13): warning C4244: '인수': '__int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  2268.cpp
   ConsoleApplication1.vcxproj -> D:\Baekjoon\Debug\ConsoleApplication1.exe
