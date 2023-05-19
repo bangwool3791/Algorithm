@@ -1,58 +1,60 @@
 #include "pch.h"
 
-const long long INF = 100'000'0001;
+const long long INF = 1'000'000'001;
+
 #define MAX 100'001
 
 long long A[MAX];
 long long Tree[MAX * 4];
 
-long long initializeSegment(int left, int right, int nodeIdx)
+long long InitializeTree(int left, int right, int nodeIdx)
 {
 	if (left == right)
 	{
-		return Tree[nodeIdx] = A[left];
+		return A[nodeIdx] = Tree[left];
 	}
 
 	int mid = (left + right) / 2;
 
-	return Tree[nodeIdx] = min(initializeSegment(left, mid, nodeIdx * 2), initializeSegment(mid + 1, right, nodeIdx * 2 + 1));
+	return A[nodeIdx] = min(InitializeTree(left, mid, nodeIdx * 2), InitializeTree(mid + 1, right, nodeIdx * 2 + 1));
 }
 
-long long Update(int left, int right, int nodeIdx, int Idx, long long value)
+long long Update(int start, int end, int nodeIdx, int idx, long long value)
 {
-	if (Idx < left || Idx > right)
-		return Tree[nodeIdx];
+	if (idx < start || idx > end)
+		return A[nodeIdx];
 
-	if (left != right)
+	if (start != end)
 	{
-		int mid = (left + right) / 2;
+		int mid = (start + end) / 2;
 
-		return Tree[nodeIdx] = min(Update(left, mid, nodeIdx * 2, Idx, value), Update(mid + 1, right, nodeIdx * 2 + 1, Idx, value));
+		return A[nodeIdx] = min(Update(start, mid, nodeIdx * 2, idx, value), Update(mid + 1, end, nodeIdx * 2 + 1, idx, value));
 	}
 	else
 	{
-		return Tree[nodeIdx] = value;
-	}
+		return A[nodeIdx] = value;
+	}	
 }
 
-long long Query(int left, int right, int nodeIdx, int leftNode, int rightNode)
+long long Query(int start, int end, int nodeIdx, int left, int right)
 {
-	if (rightNode < left || leftNode > right)
+	if (left > end || right < start)
 		return INF;
 
-	if (left <= leftNode && rightNode <= right)
+	if (start <= left && right <= end)
 	{
-		return Tree[nodeIdx];
+		return A[nodeIdx];
 	}
 
-	int mid = (leftNode + rightNode) / 2;
+	int mid = (left + right) / 2;
 
-	return min(Query(left, right, nodeIdx * 2, leftNode, mid), Query(left, right, nodeIdx * 2 + 1, mid + 1, rightNode));
+	return min(Query(start, end, nodeIdx * 2, left, mid), Query(start, end, nodeIdx * 2 + 1, mid + 1, right));
 }
 
-int main()
+void main()
 {
 	int N, M;
+
 	cin >> N;
 
 	for (int i = 1; i <= N; ++i)
@@ -60,14 +62,12 @@ int main()
 		cin >> A[i];
 	}
 
-	initializeSegment(1, N, 1);
-
 	cin >> M;
 
-	for (int i = 1; i <= M; ++i)
+	for (int i = 1; i < M; ++i)
 	{
-		int a;
-		long long b, c;
+		int a, b;
+		long long c;
 
 		cin >> a >> b >> c;
 
