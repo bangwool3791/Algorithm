@@ -312,6 +312,9 @@
     <ClCompile Include="5676.cpp">
       <Filter>소스 파일\2305\segment</Filter>
     </ClCompile>
+    <ClCompile Include="12837.cpp">
+      <Filter>소스 파일\2305\segment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
