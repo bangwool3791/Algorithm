@@ -46,6 +46,9 @@
     <Filter Include="소스 파일\2306">
       <UniqueIdentifier>{7ae6d3b8-8c01-4a96-9e20-1e7320f8d175}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\2306\Sort">
+      <UniqueIdentifier>{f498b3cd-29c4-4b75-87b7-13b522f6a031}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -373,7 +376,10 @@
       <Filter>소스 파일\2305\brueforce</Filter>
     </ClCompile>
     <ClCompile Include="2751.cpp">
-      <Filter>소스 파일\2306</Filter>
+      <Filter>소스 파일\2306\Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="11650.cpp">
+      <Filter>소스 파일\2306\Sort</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
