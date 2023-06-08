@@ -49,6 +49,9 @@
     <Filter Include="소스 파일\2306\Sort">
       <UniqueIdentifier>{f498b3cd-29c4-4b75-87b7-13b522f6a031}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\2306\Programmers">
+      <UniqueIdentifier>{ec353980-7860-4cab-a128-d8970b11b611}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -380,6 +383,9 @@
     </ClCompile>
     <ClCompile Include="11650.cpp">
       <Filter>소스 파일\2306\Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="running_race.cpp">
+      <Filter>소스 파일\2306\Programmers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

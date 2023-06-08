@@ -1,2 +1,7 @@
-﻿  11650.cpp
+﻿  running_race.cpp
+D:\Baekjoon\ConsoleApplication1\running_race.cpp(16,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Baekjoon\ConsoleApplication1\running_race.cpp(22,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Baekjoon\ConsoleApplication1\running_race.cpp(27,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Baekjoon\ConsoleApplication1\running_race.cpp(45,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Baekjoon\ConsoleApplication1\running_race.cpp(47,8): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   ConsoleApplication1.vcxproj -> D:\Baekjoon\Debug\ConsoleApplication1.exe
