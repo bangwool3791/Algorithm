@@ -393,6 +393,9 @@
     <ClCompile Include="두 원사이의 정수쌍.cpp">
       <Filter>소스 파일\2306\Programmers</Filter>
     </ClCompile>
+    <ClCompile Include="연속된 부분 수열의 합.cpp">
+      <Filter>소스 파일\2306\Programmers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
