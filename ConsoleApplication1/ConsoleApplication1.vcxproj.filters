@@ -396,6 +396,9 @@
     <ClCompile Include="연속된 부분 수열의 합.cpp">
       <Filter>소스 파일\2306\Programmers</Filter>
     </ClCompile>
+    <ClCompile Include="과제진행하기.cpp">
+      <Filter>소스 파일\2306\Programmers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
