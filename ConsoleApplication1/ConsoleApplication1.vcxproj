@@ -501,6 +501,7 @@
     <ClCompile Include="요격시스템.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="호텔 대실.cpp" />
     <ClCompile Include="혼자서 하는 틱택토.cpp" />
   </ItemGroup>
   <ItemGroup>
