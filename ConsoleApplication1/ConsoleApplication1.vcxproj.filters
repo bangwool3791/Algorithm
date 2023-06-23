@@ -423,6 +423,9 @@
     <ClCompile Include="뒤에있는큰수.cpp">
       <Filter>소스 파일\2306\Programmers</Filter>
     </ClCompile>
+    <ClCompile Include="숫자변환하기.cpp">
+      <Filter>소스 파일\2306\Programmers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
