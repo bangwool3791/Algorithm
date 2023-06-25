@@ -429,6 +429,9 @@
     <ClCompile Include="시소짝꿍.cpp">
       <Filter>소스 파일\2306\Programmers</Filter>
     </ClCompile>
+    <ClCompile Include="택배 배달과 수거하기.cpp">
+      <Filter>소스 파일\2306\Programmers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
