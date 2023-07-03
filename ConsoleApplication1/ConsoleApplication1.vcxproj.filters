@@ -447,6 +447,9 @@
     <ClCompile Include="점프와순간이동.cpp">
       <Filter>소스 파일\2306\Programmers</Filter>
     </ClCompile>
+    <ClCompile Include="귤 고르기.cpp">
+      <Filter>소스 파일\2306\Programmers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
