@@ -516,6 +516,7 @@
     <ClCompile Include="요격시스템.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="우박수열정적분.cpp" />
     <ClCompile Include="유사칸토어비트열.cpp" />
     <ClCompile Include="이모티콘 할인행사.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
