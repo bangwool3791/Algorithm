@@ -512,6 +512,7 @@
     <ClCompile Include="시소짝꿍.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="양궁대회.cpp" />
     <ClCompile Include="연속 부분 수열 합의 개수.cpp" />
     <ClCompile Include="연속된 부분 수열의 합.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
