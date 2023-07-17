@@ -489,6 +489,9 @@
     <ClCompile Include="n^2 배열 자르기.cpp">
       <Filter>소스 파일\2307</Filter>
     </ClCompile>
+    <ClCompile Include="교점에 별 만들기.cpp">
+      <Filter>소스 파일\2307</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
