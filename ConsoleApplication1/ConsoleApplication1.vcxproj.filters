@@ -483,6 +483,9 @@
     <ClCompile Include="k진수에서 소수 개수 구하기.cpp">
       <Filter>소스 파일\2307</Filter>
     </ClCompile>
+    <ClCompile Include="피로도.cpp">
+      <Filter>소스 파일\2307</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

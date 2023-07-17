@@ -532,6 +532,7 @@
     </ClCompile>
     <ClCompile Include="택배상자.cpp" />
     <ClCompile Include="테이블 해시 함수.cpp" />
+    <ClCompile Include="피로도.cpp" />
     <ClCompile Include="할인행사.cpp" />
     <ClCompile Include="호텔 대실.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
