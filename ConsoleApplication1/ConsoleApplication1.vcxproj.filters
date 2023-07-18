@@ -52,6 +52,9 @@
     <Filter Include="소스 파일\2306\Programmers">
       <UniqueIdentifier>{ec353980-7860-4cab-a128-d8970b11b611}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\2307">
+      <UniqueIdentifier>{5b7d8b2a-ff10-4323-a833-e66d1d98eff9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -477,11 +480,25 @@
     <ClCompile Include="양궁대회.cpp">
       <Filter>소스 파일\2306\Programmers</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="전력망을 둘로 나누기.cpp">
       <Filter>소스 파일\2306\Programmers</Filter>
     </ClCompile>
     <ClCompile Include="전력망을둘로나누기.cpp">
       <Filter>소스 파일\2306\Programmers</Filter>
+=======
+    <ClCompile Include="k진수에서 소수 개수 구하기.cpp">
+      <Filter>소스 파일\2307</Filter>
+    </ClCompile>
+    <ClCompile Include="피로도.cpp">
+      <Filter>소스 파일\2307</Filter>
+    </ClCompile>
+    <ClCompile Include="n^2 배열 자르기.cpp">
+      <Filter>소스 파일\2307</Filter>
+    </ClCompile>
+    <ClCompile Include="교점에 별 만들기.cpp">
+      <Filter>소스 파일\2307</Filter>
+>>>>>>> abcf379231f01318c443b6d619cd757487820682
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
