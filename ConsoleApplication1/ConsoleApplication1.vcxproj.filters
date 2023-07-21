@@ -150,6 +150,8 @@
     <ClCompile Include="2178.cpp" />
     <ClCompile Include="빛의 경로 사이클.cpp" />
     <ClCompile Include="모음사전.cpp" />
+    <ClCompile Include="거리두기확인.cpp" />
+    <ClCompile Include="2개 이하로 다른 비트.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
