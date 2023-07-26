@@ -154,6 +154,7 @@
     <ClCompile Include="2개 이하로 다른 비트.cpp" />
     <ClCompile Include="행렬 테두리 회전하기.cpp" />
     <ClCompile Include="괄호회전하기.cpp" />
+    <ClCompile Include="순위검색.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
