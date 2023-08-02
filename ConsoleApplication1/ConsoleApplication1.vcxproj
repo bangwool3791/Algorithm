@@ -537,6 +537,7 @@
     <ClCompile Include="전력망을 둘로 나누기.cpp" />
     <ClCompile Include="전력망을둘로나누기.cpp" />
     <ClCompile Include="점프와순간이동.cpp" />
+    <ClCompile Include="쿼드압축 후 개수 세기.cpp" />
     <ClCompile Include="택배 배달과 수거하기.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
