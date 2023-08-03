@@ -156,6 +156,8 @@
     <ClCompile Include="괄호회전하기.cpp" />
     <ClCompile Include="순위검색.cpp" />
     <ClCompile Include="쿼드압축 후 개수 세기.cpp" />
+    <ClCompile Include="수식최대화.cpp" />
+    <ClCompile Include="삼각달팽이.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
