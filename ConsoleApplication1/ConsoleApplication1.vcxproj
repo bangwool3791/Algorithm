@@ -481,6 +481,7 @@
     <ClCompile Include="과제진행하기.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="괄호변환.cpp" />
     <ClCompile Include="괄호회전하기.cpp" />
     <ClCompile Include="광물캐기.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -506,9 +507,11 @@
     <ClCompile Include="무인도여행.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="문자열압축.cpp" />
     <ClCompile Include="미로 탈출.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="방문길이.cpp" />
     <ClCompile Include="빛의 경로 사이클.cpp" />
     <ClCompile Include="삼각달팽이.cpp" />
     <ClCompile Include="소스.cpp">
@@ -520,6 +523,7 @@
     <ClCompile Include="숫자변환하기.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="스킬트리.cpp" />
     <ClCompile Include="시소짝꿍.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
