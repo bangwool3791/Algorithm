@@ -1,141 +1,132 @@
-#include "pch.h"
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
 
-vector<pair<int, char>> vec;
-deque<pair<int, int>> deq;
-int v[101][101];
+int N = 0, K = 0, L = 0;
+int dir = 0;
+int answerTime = -1;
+vector<vector<int>> board;
+int dx[4] = { 1, 0, -1, 0 };
+int dy[4] = { 0, -1, 0, 1 };
 
-int dx[4] = { 1, 0, -1 , 0 };
-int dy[4] = { 0, -1, 0 , 1 };
-
-int n = 0;
-
-void Input()
+queue<pair<int, string>> snake_dir;
+queue<pair<int, int>> tail_pos;
+void print()
 {
-	cin >> n;
+    for (int i = 0; i < N; ++i)
+    {
+        for (int j = 0; j < N; ++j)
+            cout << board[i][j] << " ";
 
-	int m = 0;
-
-	for (int i = 0; i < 100; ++i)
-	{
-		for (int j = 0; j < 100; ++j)
-		{
-			int a = 0;
-			v[i][j] = a;
-		}
-	}
-
-	cin >> m;
-
-	while (0 < m)
-	{
-		int a = 0;
-		int b = 0;
-		cin >> a >> b;
-		v[a - 1][b - 1] = 1;
-		--m;
-	}
-
-	cin >> m;
-
-	while (0 < m)
-	{
-		int a = 0;
-		char b = 0;
-		cin >> a >> b;
-		vec.push_back({ a, b });
-		--m;
-	}
+        cout << endl;
+    }
+    cout << answerTime << endl;
+}
+void GetRightDir()
+{
+    if (dir == 0)
+        dir = 3;
+    else if (dir == 1)
+        dir = 0;
+    else if (dir == 2)
+        dir = 1;
+    else if (dir == 3)
+        dir = 2;
 }
 
-int Rotation(char c, int a)
+void GetLeftDir()
 {
-	if ('D' == c)
-	{
-		if (0 == a)return 3;
-		else if (1 == a)return 0;
-		else if (2 == a)return 1;
-		else if (3 == a)return 2;
-	}
-	else if ('L' == c)
-	{
-		if (0 == a)return 1;
-		else if (1 == a)return 2;
-		else if (2 == a)return 3;
-		else if (3 == a)return 0;
-	}
-}
-
-
-void Print()
-{
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < n; j++)
-		{
-			cout << v[i][j] << " ";
-		}
-		cout << endl;
-	}
+    if (dir == 0)
+        dir = 1;
+    else if (dir == 1)
+        dir = 2;
+    else if (dir == 2)
+        dir = 3;
+    else if (dir == 3)
+        dir = 0;
 }
 
 void Progress()
 {
-	int t = 0;
-	int x = 0;
-	int y = 0;
-	int d = 0;
-	int idx = 0;
+    queue<pair<int, int>> PosQueue;
+    PosQueue.push({ 0,0 });
 
-	deq.push_back({ x,y });
-	v[x][y] = 2;
-	while (!deq.empty())
-	{
-		++t;
+    while (!PosQueue.empty())
+    {
+        ++answerTime;
 
-		//x = deq.front().first;
-		//y = deq.front().second;
+        if (!snake_dir.empty() && snake_dir.front().first == answerTime)
+        {
+            string dirString = snake_dir.front().second;
+            if (dirString == "L")
+            {
+                GetLeftDir();
+            }
+            else if (dirString == "D")
+            {
+                GetRightDir();
+            }
+            snake_dir.pop();
+        }
 
-		int _x = x + dx[d];
-		int _y = y + dy[d];
+        pair<int, int> pos = PosQueue.front();
+        PosQueue.pop();
+        tail_pos.push({ pos });
 
-		int target = v[_x][_y];
+        pair<int, int> newPos{ pos.first + dy[dir], pos.second + dx[dir] };
 
-		if (0 > _x || 0 > _y || n <= _x || n <= _y || target == 2)
-		{
-			break;
-		}
-		else if (0 == target)
-		{
-			v[_x][_y] = 2;
-			deq.push_front({ _x, _y });
-			v[deq.back().first][deq.back().second] = 0;
-			deq.pop_back();
-		}
-		else if (1 == target)
-		{
-			v[_x][_y] = 2;
-			deq.push_front({ _x, _y });
-		}
+        if (newPos.first < 0 || newPos.first >= N || newPos.second < 0 || newPos.second >= N)
+        {
+            ++answerTime;
+            return;
+        }
 
-		if (idx < vec.size())
-		{
-			if (t >= vec[idx].first)
-			{
-				d = Rotation(vec[idx].second, d);
-				++idx;
-			}
-		}
-		x = _x;
-		y = _y;
+        if (board[newPos.first][newPos.second] == 1)
+        {
+            ++answerTime;
+            return;
+        }
 
-	}
-
-	cout << t << endl;
+        if (board[newPos.first][newPos.second] == 2)
+        {
+            board[newPos.first][newPos.second] = 1;
+        }
+        else if (board[newPos.first][newPos.second] == 0)
+        {
+            if (!tail_pos.empty())
+            {
+                board[tail_pos.front().first][tail_pos.front().second] = 0;
+                tail_pos.pop();
+            }
+            board[newPos.first][newPos.second] = 1;
+        }
+        PosQueue.push(newPos);
+    }
 }
 
 int main()
 {
-	Input();
-	Progress();
-	return 0;
+    cin >> N >> K;
+    board = vector<vector<int>>(N, vector<int>(N, 0));
+    board[0][0] = 1;
+
+    for (int i = 0; i < K; ++i)
+    {
+        int x = 0; int y = 0;
+        cin >> y >> x;
+        board[y - 1][x - 1] = 2;
+    }
+    cin >> L;
+
+    for (int i = 0; i < L; ++i)
+    {
+        int time = 0;
+        string direction = "";
+        cin >> time >> direction;
+        snake_dir.push({ time, direction });
+    }
+    Progress();
+    cout << answerTime << endl;
+    return 0;
 }

@@ -47,7 +47,7 @@ void dfs(vector<int> picks, int location, int sum, vector<string> minerals)
     {
         if (picks[i] != 0)
         {
-            picks[i] -= 1;+
+            picks[i] -= 1;
             dfs(picks, savePoint + 1, sum + sumList[i], minerals);
             picks[i] += 1;
         }

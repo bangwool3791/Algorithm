@@ -1,123 +1,95 @@
-#include "pch.h"
+#include <iostream>
+#include <vector>
+#include <cmath>
 
-int v[500][501];
+using namespace std;
 
-bool visited[500][501];
+int n = 0, m = 0;
+int answer = 0;
+vector<vector<int>> valid;
+vector<vector<int>> paper;
 
-int dx[4] = { 1, -1, 0, 0 };
-int dy[4] = { 0, 0, 1, -1 };
+int dx[4] = { -1, 1, 0, 0 };
+int dy[4] = { 0, 0, -1, 1 };
 
-int dx1[4] = { 0, 1, 1, 2 };
-int dy1[4] = { 0, 0, 1, 0 };
+int dx1[4] = { 0, 0, 0, 1 };
+int dy1[4] = { 0, 1, 2, 1 };
 
-int dx2[4] = { 0, 0, -1, 0 };
-int dy2[4] = { 0, 1, 1, 2 };
+int dx2[4] = { 0, 1, 1, 2 };
+int dy2[4] = { 0, 0,-1, 0 };
 
-int dx3[4] = { 0, 0, 1, 0 };
-int dy3[4] = { 0, 1, 1, 2 };
+int dx3[4] = { 0, 1, 2, 1 };
+int dy3[4] = { 0, 0, 0, 1 };
 
-//shape1
-int dx4[4] = { 0, 1, 1, 2 };
-int dy4[4] = { 0, 0, -1, 0 };
+int dx4[4] = { 0, 0, 0, -1 };
+int dy4[4] = { 0, 1, 2,  1 };
 
-int n, m;
-int answer;
-
-bool valid(int x, int y, int* arrx, int* arry)
+void triangle(int x, int y, int* dx, int* dy)
 {
-	for (int i = 0; i < 4; ++i)
-	{
-		int dx = x + arrx[i];
-		int dy = y + arry[i];
-		
-		if (0 > dx || dx >= m || 0 > dy || dy >= n)
-			return false;
-	}
+    int sum = 0;
+    for (int i = 0; i < 4; ++i)
+    {
+        int nx = x + dx[i];
+        int ny = y + dy[i];
 
-	return true;
+        if (nx < 0 || nx >= m || ny < 0 || ny >= n)
+            return;
+
+        sum += paper[ny][nx];
+    }
+
+    answer = max(answer, sum);
 }
 
-int shape(int x, int y, int* arrx, int* arry)
+void dfs(int depth, int x, int y, int sum)
 {
-	int sum = 0;
-	if (valid(x, y, arrx, arry))
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			int dx = x + arrx[i];
-			int dy = y + arry[i];
+    if (depth == 3)
+    {
+        answer = max(answer, sum);
+        return;
+    }
+    else
+    {
+        for (int i = 0; i < 4; ++i)
+        {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
 
-			sum += v[dy][dx];
-		}
-	}
-	return sum;
+            if (nx < 0 || nx >= m || ny < 0 || ny >= n)
+                continue;
+
+            if (valid[ny][nx])
+                continue;
+
+            valid[ny][nx] = true;
+            dfs(depth + 1, nx, ny, sum + paper[ny][nx]);
+            valid[ny][nx] = false;
+        }
+    }
 }
 
-void dfs(int x, int y, int depth, int sum)
-{
-	if (3 == depth)
-	{
-		answer = max(answer, sum);
-		return;
-	}
-	else
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			int _x = x + dx[i];
-			int _y = y + dy[i];
-
-			if (0 > _x || _x >= m || 0 > _y || _y >= n)
-				continue;
-
-			if (visited[_y][_x])
-				continue;
-
-			visited[_y][_x] = true;
-			dfs(_x, _y, depth + 1, sum + v[_y][_x]);
-			visited[_y][_x] = false;
-		}
-	}
-}
-
-void FuckShape(int x, int y)
-{
-	int result = 0;
-	result = shape(x, y, dx1, dy1);
-	if (answer < result)
-		answer = result;
-	result = shape(x, y, dx2, dy2);
-	if (answer < result)
-		answer = result;
-	result = shape(x, y, dx3, dy3);
-	if (answer < result)
-		answer = result;
-	result = shape(x, y, dx4, dy4);
-	if (answer < result)
-		answer = result;
-}
 int main()
 {
-	cin >> n >> m;
+    cin >> n >> m;
 
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = 0; j < m; ++j)
-		{
-			cin >> v[i][j];
-		}
-	}
+    valid = vector<vector<int>>(n, vector<int>(m, 0));
+    paper = vector<vector<int>>(n, vector<int>(m, 0));
 
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = 0; j < m; ++j)
-		{
-			visited[i][j] = true;
-			dfs(j, i, 0, v[i][j]);
-			visited[i][j] = false;
-			FuckShape(j, i);
-		}
-	}
-	cout << answer << endl;
-	return 0;
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < m; ++j)
+            cin >> paper[i][j];
+
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < m; ++j)
+        {
+            valid[i][j] = true;
+            dfs(0, j, i, paper[i][j]);
+            valid[i][j] = true;
+            triangle(j, i, dx1, dy1);
+            triangle(j, i, dx2, dy2);
+            triangle(j, i, dx3, dy3);
+            triangle(j, i, dx4, dy4);
+        }
+    cout << answer << endl;
+    return 0;
 }

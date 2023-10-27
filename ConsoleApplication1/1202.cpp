@@ -1,4 +1,5 @@
-#include "pch.h"
+#include <bits/stdc++.h>
+using namespace std;
 
 #define MAX 300001
 
@@ -17,7 +18,7 @@ int main()
 	{
 		cin >> M >> V;
 
-		jewerly[i] = {M, V};
+		jewerly[i] = { M, V };
 	}
 
 	int C;
